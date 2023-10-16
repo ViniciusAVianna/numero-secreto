@@ -1,6 +1,6 @@
 let numerosJaSorteados = [];
 let tentativas = 0;
-let numeroMaximo = 100;
+let numeroMaximo = 10;
 
 function exibirTexto(tag, texto){
     let campo = document.querySelector(tag);
