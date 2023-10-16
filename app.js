@@ -5,7 +5,7 @@ let numeroMaximo = 10;
 function exibirTexto(tag, texto){
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
-    responsiveVoice.speak(texto, "Brazilian Portuguese Female", {rate:1.2});
+    //responsiveVoice.speak(texto, "Brazilian Portuguese Female", {rate:1.2});
 }
 
 function exibirTextoInicial(){
@@ -26,7 +26,6 @@ function gerarNumeroAleatorio(){
         return gerarNumeroAleatorio();
     } else{
         numerosJaSorteados.push(numeroGerado);
-        console.log(numerosJaSorteados);
         return numeroGerado;
     }   
 }
@@ -42,9 +41,11 @@ function limparCampo(){
 function verificarChute(){
     tentativas++;
     let palpite = document.querySelector("input").value;
-    console.log(numSecreto);
     
-    if (palpite == numSecreto){
+    if (palpite < 1 || palpite > 10){
+        exibirTexto("p", "Palpite inválido. Escolha um número entre 1 e " + numeroMaximo);
+        tentativas--;
+    } else if (palpite == numSecreto){
         exibirTexto("h1", "Acertou!");
         let palavraTentativa = tentativas == 1 ? "tentativa" : "tentativas";
         let msgAcerto = `Você descobriu o número secreto em ${tentativas} ${palavraTentativa}.`
