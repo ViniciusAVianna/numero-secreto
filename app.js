@@ -51,6 +51,8 @@ function verificarChute(){
         let msgAcerto = `Você descobriu o número secreto em ${tentativas} ${palavraTentativa}.`
         exibirTexto("p", msgAcerto);
         document.getElementById("reiniciar").removeAttribute("disabled");
+        document.getElementById("chutar").setAttribute("disabled", true);
+        document.querySelector("input").setAttribute("disabled", true);
     } else if (palpite > numSecreto){
         exibirTexto("p", "O número secreto é menor que " + palpite);
         limparCampo();
@@ -67,4 +69,6 @@ function reiniciarJogo(){
     limparCampo();
     tentativas = 0;
     document.getElementById("reiniciar").setAttribute("disabled",true);
+    document.getElementById("chutar").removeAttribute("disabled");
+    document.querySelector("input").removeAttribute("disabled");
 }
